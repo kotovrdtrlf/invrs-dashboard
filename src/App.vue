@@ -1,22 +1,38 @@
-<template></template>
+<template>
+  <Navbar />
+  <main>
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+  </main>
+</template>
 
 <script>
-export default {};
+import Navbar from "./components/Navbar.vue";
+
+export default {
+  components: {
+    Navbar,
+  },
+};
 </script>
 
 <style>
 :root {
-  --primary-color: #17212f;
+  --my-primary-color: #17212f;
   --secondary-color: #1f2d40;
 
-  --text-color-white: #e2e4e6;
-  --text-color-grey: #b9bfbf;
+  --text-color-white: #f7f7f7;
+  --text-color-grey: #a5abb3;
 
   --accent-color-green: #34cc9c;
+  --accent-color-green-transparent: #34cc9c22;
   --accent-color-blue: #1976d2;
 }
 html,
-body {
+body * {
   padding: 0;
   margin: 0;
 }
@@ -37,12 +53,28 @@ body {
   width: 100%;
   height: 100%;
 
-  background: var(--primary-color);
+  background: var(--my-primary-color);
 
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   overflow-x: hidden;
+}
+
+a:-webkit-any-link {
+  color: unset;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
