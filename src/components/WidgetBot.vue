@@ -1,7 +1,7 @@
 <template>
   <widgetbot
-    server="299881420891881473"
-    channel="355719584830980096"
+    server="830088445559963709"
+    channel="830088445559963712"
     id="embed"
     class="widgetbot-container"
   ></widgetbot>
